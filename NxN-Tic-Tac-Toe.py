@@ -73,9 +73,11 @@ def format_board_pretty(board):
         string=string[:-1]+"\n"
     return top+'\n'+string[:-2*len(board)-2]
 def play_move(board, player):
+    print(f'{player} to play:')
     x=int(input())
     y=int(input())
     board[x-1][y-1]=player
+    print(format_board_pretty(board))
 def make_board(size):
     row = []
     for _ in range(size):
@@ -84,4 +86,25 @@ def make_board(size):
     for _ in range(size):
         board.append(row.copy())
     return board
-
+def draw(board):
+    return not(any(' ' in row for row in board))
+def print_winner(player):
+    print(f'{player} wins!')
+def print_draw():
+    print("It's a draw!")
+def play_game(board_size, player1, player2):
+    board = make_board(board_size)
+    print(format_board_pretty(board))
+    players=[player1,player2]
+    active_player=player1
+    while True:
+        play_move(board, active_player)
+        if winner(board):
+            return print_winner(active_player)
+        elif draw(board):
+            return print_draw()
+        else:
+            players=[player1,player2]
+            players.remove(active_player)
+            active_player=players[0]
+play_game(3,'X','O')

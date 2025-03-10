@@ -72,3 +72,16 @@ def format_board_pretty(board):
             string+='-+'
         string=string[:-1]+"\n"
     return top+'\n'+string[:-2*len(board)-2]
+def play_move(board, player):
+    x=int(input())
+    y=int(input())
+    board[x-1][y-1]=player
+def make_board(size):
+    row = []
+    for _ in range(size):
+        row.append(' ')
+    board = []
+    for _ in range(size):
+        board.append(row.copy())
+    return board
+

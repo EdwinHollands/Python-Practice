@@ -47,3 +47,7 @@ def diagonal_winner(board):
         else:
             return True
     return False
+def winner(board):
+    return column_winner(board)\
+    or row_winner(board)\
+    or diagonal_winner(board)

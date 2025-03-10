@@ -28,4 +28,22 @@ def column_winner(board):
                 return True
     else:
         return False
-#test
+def diagonal_winner(board):
+    n = len(board)
+    if board[0][n-1] != ' ':
+            for i in range(n):
+                if board[0][n-1] == board[0+i][n-1-i]:
+                    continue
+                else:
+                    break
+            else:
+                return True
+    if board[0][0] != ' ':
+        for i in range(n):
+            if board[0][0] == board[i][i]:
+                continue
+            else:
+                break
+        else:
+            return True
+    return False

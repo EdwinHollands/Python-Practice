@@ -51,16 +51,24 @@ def winner(board):
     return column_winner(board)\
     or row_winner(board)\
     or diagonal_winner(board)
-def format_board_basic(board):
-    string=''
-    for row in board:
-        string+="".join(row)+"\n"
-    return string[:-1]
 def format_board(board):
     string=''
+    n=0
+    top=' '
     for row in board:
-        string+="|".join(row)+"\n"
+        n+=1
+        top+=str(n)
+        string+=str(n)+"".join(row)+"\n"
+    return top+'\n'+string[:-1]
+def format_board_pretty(board):
+    string=''
+    n=0
+    top=' '
+    for row in board:
+        n+=1
+        top+=' '+str(n)
+        string+=str(n)+' '+"|".join(row)+"\n  "
         for _ in board:
             string+='-+'
         string=string[:-1]+"\n"
-    return string[:-2*len(board)-1]
+    return top+'\n'+string[:-2*len(board)-2]

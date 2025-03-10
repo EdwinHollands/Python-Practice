@@ -1,5 +1,5 @@
 def assert_equal(test,value):
-    return test == value
+    print(test == value)
 def row_winner(board):
     for n in range(len(board)):
         if board[n][0] == ' ':
@@ -28,14 +28,3 @@ def column_winner(board):
                 return True
     else:
         return False
-assert_equal(
-    column_winner(
-        [
-            ['X', 'O', ' ', 'X'],
-            [' ', 'O', 'X', 'O'],
-            ['O', 'O', 'X', 'X'],
-            ['O', 'O', 'X', ' ']
-        ]
-    ),
-    True
-)

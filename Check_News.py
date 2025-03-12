@@ -11,6 +11,5 @@ print(f"{soup.title.string} Headlines:")
 # Find all article titles and their corresponding links
 articles = soup.find_all('h2')
 for index, article in enumerate(articles):
-    title = article.get_text()
-    link = article.find('a')['href'] if article.find('a') else 'No link available'
-    print(f"{index + 1}: {title}\nLink: {link}\n")
+    title = article.text
+    print(f"{index + 1}: {title}")
